@@ -21,22 +21,23 @@ php artisan key:generate
 npm run dev
 # or, if you prefer minified files
 npm run prod
-```
-# install passport
+
+#install passport
 php artisan passport:install
 
-# DB Migration
+#DB Migration
 php artisan make:migrate
 
-# DB Seeder
+#DB Seeder
 php artisan db:seed
 
 #login admin
-admin@admin.com
-admin@123
+email: admin@admin.com
+pass: admin@123
 #login user
-user@user.com
-user@123
+email: user@user.com
+pass: user@123
+```
 
 Then launch the server:
 
