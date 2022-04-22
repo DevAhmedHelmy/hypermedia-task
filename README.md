@@ -2,7 +2,7 @@
 
 > Laravel sample website with content retrieving from [prismic.io](https://prismic.io)
 
-This project runs with Laravel version 5.5.
+This project runs with Laravel version 9.2.
 
 ## Getting started
 
