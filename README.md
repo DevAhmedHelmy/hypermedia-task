@@ -6,7 +6,7 @@ This project runs with Laravel version 5.5.
 
 ## Getting started
 
-Assuming you've already installed on your machine: PHP (>= 7.0.0), [Laravel](https://laravel.com), [Composer](https://getcomposer.org) and [Node.js](https://nodejs.org).
+Assuming you've already installed on your machine: PHP (^8.0.2), [Laravel](https://laravel.com), [Composer](https://getcomposer.org) and [Node.js](https://nodejs.org).
 
 ``` bash
 # install dependencies
