@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
-use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
@@ -12,7 +11,7 @@ use App\Repository\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
 {
-    use HttpResponse;
+
     private $categoryRepository;
 
     public function __construct(CategoryRepositoryInterface $categoryRepository)
