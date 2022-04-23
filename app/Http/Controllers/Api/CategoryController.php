@@ -33,7 +33,6 @@ class CategoryController extends Controller
             // to display in select will return all data
             $categories = ($this->categoryRepository->all())->all();
         }
-
         return CategoryResource::collection($categories);
     }
 
