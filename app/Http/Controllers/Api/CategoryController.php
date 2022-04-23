@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
+use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
@@ -11,6 +12,7 @@ use App\Repository\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
 {
+    use HttpResponse;
     private $categoryRepository;
 
     public function __construct(CategoryRepositoryInterface $categoryRepository)
@@ -22,9 +24,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = $this->categoryRepository->all();
+        if ($request->has('is_paginate')) {
+            // to display with paginate will receive is_paginate
+            $categories = ($this->categoryRepository->all())->paginate(10);
+        } else {
+            // to display in select will return all data
+            $categories = ($this->categoryRepository->all())->all();
+        }
+
         return CategoryResource::collection($categories);
     }
 

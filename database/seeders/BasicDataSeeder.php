@@ -20,7 +20,7 @@ class BasicDataSeeder extends Seeder
             'email' => 'admin@admin.com',
             'type' => 'admin',
             'email_verified_at' => now(),
-            'password' =>bcrypt('admin@123'),
+            'password' =>'admin@123',
             'remember_token' => Str::random(10)
         ]);
         $user =User::create([
@@ -28,7 +28,7 @@ class BasicDataSeeder extends Seeder
             'email' => 'user@user.com',
             'type' => 'user',
             'email_verified_at' => now(),
-            'password' =>bcrypt('user@123'),
+            'password' =>'user@123',
             'remember_token' => Str::random(10)
         ]);
     }

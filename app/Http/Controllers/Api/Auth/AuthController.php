@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $data = $request->except('password_confirmation');
-        $data['password'] = bcrypt($request->password);
+
         $user = User::create($data);
 
 

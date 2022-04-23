@@ -22,7 +22,7 @@ class CategoryRepository  implements CategoryRepositoryInterface
 
     public function all()
     {
-        return $this->model->paginate();
+        return $this->model;
     }
     /**
      * @param array $attributes

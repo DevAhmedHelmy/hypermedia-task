@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Models\Category;
 use App\Repository\ProductRepositoryInterface;
+use App\Repository\CategoryRepositoryInterface;
 
 class ProductController extends Controller
 {
-    private $productRepository;
+    private $productRepository,$categoryRepository;
 
-   public function __construct(ProductRepositoryInterface $productRepository)
+   public function __construct(ProductRepositoryInterface $productRepository,CategoryRepositoryInterface $categoryRepository)
    {
        $this->productRepository = $productRepository;
+       $this->categoryRepository = $categoryRepository;
    }
     /**
      * Display a listing of the resource.
@@ -35,7 +37,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = ($this->categoryRepository->all())->all();
         return view('admin.products.create',compact('categories'));
     }
 
