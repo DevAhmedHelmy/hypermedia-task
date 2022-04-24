@@ -23,10 +23,7 @@
                     <td>{{$category->created_at}}</td>
                     <td>
                         <form id="delete-form-{{ $category->id }}" action="{{ route('admin.categories.destroy',$category->id) }}" method="post">
-                            <a href="{{route('admin.categories.show',$category->id)}}" class="btn btn-sm btn-clean
-                            btn-icon mr-2" title="@lang('general.show')">
-                                <i class="fa fa-eye"></i>
-                            </a>
+
 
 
                             <a href="{{route('admin.categories.edit',$category->id)}}" class="btn btn-sm btn-clean

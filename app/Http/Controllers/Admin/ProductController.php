@@ -50,7 +50,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $this->productRepository->create($request->all());
-        return redirect('admin/products')->with(['message'=>'Created Successfully']);
+        return redirect('admin/products')->with('success','Created Successfully');
     }
 
     /**
