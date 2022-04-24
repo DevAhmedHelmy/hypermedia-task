@@ -3,7 +3,6 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\Category;
-use App\Repository\Eloquent\BaseRepository;
 use App\Repository\CategoryRepositoryInterface;
 
 class CategoryRepository  implements CategoryRepositoryInterface
