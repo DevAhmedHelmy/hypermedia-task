@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "302a05c0-dfc1-4f0e-b804-79d1e71196ea",
+		"_postman_id": "f1361910-ea72-47c4-954f-9fccec0a17bd",
 		"name": "task",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,6 +11,9 @@
 				{
 					"name": "login",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -26,12 +29,14 @@
 									"key": "email",
 									"value": "user@user.com",
 									"description": "user login",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
-									"value": "",
-									"type": "text"
+									"value": "user@123",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -41,18 +46,17 @@
 								},
 								{
 									"key": "password",
-									"value": "",
+									"value": "admin@123",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/auth/login",
+							"raw": "{{url}}/login",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"auth",
 								"login"
 							]
 						}
@@ -63,14 +67,24 @@
 					"name": "logout",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/auth/logout",
+							"raw": "{{url}}/logout",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"auth",
 								"logout"
 							]
 						}
@@ -91,6 +105,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -100,6 +119,13 @@
 							],
 							"path": [
 								"categories"
+							],
+							"query": [
+								{
+									"key": "is_paginate",
+									"value": "1",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -113,6 +139,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
@@ -147,16 +178,21 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{url}}/categories/1",
+							"raw": "{{url}}/categories/3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"categories",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -171,6 +207,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -184,13 +225,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/categories/1",
+							"raw": "{{url}}/categories/3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"categories",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -205,16 +246,21 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{url}}/categories/1",
+							"raw": "{{url}}/categories/2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"categories",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -227,6 +273,9 @@
 			"item": [
 				{
 					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -234,8 +283,17 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
 						"url": {
 							"raw": "{{url}}/products",
 							"host": [
@@ -243,6 +301,23 @@
 							],
 							"path": [
 								"products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "d",
+									"disabled": true
+								},
+								{
+									"key": "categories[]",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "categories[]",
+									"value": "2",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -257,6 +332,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -274,7 +354,7 @@
 								},
 								{
 									"key": "category_id",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								}
 							]
@@ -286,119 +366,6 @@
 							],
 							"path": [
 								"products"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": null,
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/products/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"products",
-								"1"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": null,
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "test update",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "description test",
-									"type": "text"
-								},
-								{
-									"key": "category_id",
-									"value": "1",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/products/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"products",
-								"1"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": null,
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "destroy",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/products/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"products",
-								"1"
 							],
 							"query": [
 								{
