@@ -22,11 +22,12 @@ use App\Http\Controllers\Api\Auth\AuthController;
 Route::post('/register', [AuthController::class,'register']);
 Route::post('/login', [AuthController::class,'login']);
 Route::middleware(['auth:api'])->group(function() {
-
+    Route::post('/logout', [AuthController::class,'logout']);
 
     Route::get('products',[ProductController::class,'index']);
     Route::middleware('api-admin')->group(function(){
         Route::post('products',[ProductController::class,'store']);
         Route::apiResource('categories',CategoryController::class);
     });
+
 });

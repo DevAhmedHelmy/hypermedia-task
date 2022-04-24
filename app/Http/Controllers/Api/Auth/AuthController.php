@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthResource;
+use Illuminate\Support\Facades\Request;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 
@@ -33,7 +34,13 @@ class AuthController extends Controller
         return $this->userResponse(auth()->user(),$token);
 
     }
-
+    public function logout(Request $request)
+    {
+        auth()->user()->token()->revoke();
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+    }
     private function userResponse(User $user, $token)
     {
         return response([
